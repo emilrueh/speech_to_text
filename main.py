@@ -1,5 +1,10 @@
 from src.openai_scripts import call_whisper, call_gpt
-from src.txt_scripts import append_to_or_create_txt_file, open_txt_file, insert_newlines
+from src.data_scripts import (
+    append_to_or_create_txt_file,
+    open_txt_file,
+    insert_newlines,
+    backup_data,
+)
 
 from dotenv import load_dotenv
 import os
@@ -27,9 +32,9 @@ def main():
         api_key=OPENAI_API_KEY, prompt=summary_prompt, input_text=transcription
     )
 
-    append_to_or_create_txt_file(input_text=summary, output_file_path=desired_txt_path)
-
-    summary = open_txt_file(txt_file_path=desired_txt_path)
+    summary = backup_data(
+        input_data=summary, input_name="voice_summary", backup_directory="data"
+    )
     summary_formatted = insert_newlines(string=summary, every=96)
 
     print(f"\n{summary_formatted}\n")
