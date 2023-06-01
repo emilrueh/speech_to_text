@@ -4,3 +4,4 @@ src/notebooks
 .env
 voice_message.mp3
 voice_summary_backup.txt
+test_data.txt
