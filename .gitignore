@@ -3,4 +3,4 @@ data/working_data
 src/notebooks
 .env
 voice_message.mp3
-data/voice_summary_backup.txt
+voice_summary_backup.txt
